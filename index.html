@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Means Clustering | Manhattan vs Euclidean</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>K-Means Clustering Solver</h1>
+            <p>Manhattan vs Euclidean Distance | Step by Step</p>
+        </header>
+
+        <div class="content">
+            <div id="step1" class="step active">
+                <div class="section">
+                    <h2>1. Enter Your Data</h2>
+                    <div class="var-names-panel">
+                        <div class="var-input">
+                            <label>X Variable Name:</label>
+                            <input type="text" id="xName" value="Height" class="var-input-field">
+                        </div>
+                        <div class="var-input">
+                            <label>Y Variable Name:</label>
+                            <input type="text" id="yName" value="Weight" class="var-input-field">
+                        </div>
+                    </div>
+                    <div class="input-controls">
+                        <button id="addRowBtn" class="btn-purple">Add New Row</button>
+                        <button id="resetDataBtn" class="btn-dark">Reset to Example</button>
+                    </div>
+                    <div id="dataInputTable"></div>
+                    <button id="nextToStep2" class="btn-purple-large next-btn">Next →</button>
+                </div>
+            </div>
+
+            <div id="step2" class="step">
+                <div class="section">
+                    <h2>2. Choose Distance Method & Settings</h2>
+                    <div class="method-selector">
+                        <label class="method-option">
+                            <input type="radio" name="distanceMethod" value="manhattan" checked>
+                            <span>Manhattan Distance (City Block)</span>
+                        </label>
+                        <label class="method-option">
+                            <input type="radio" name="distanceMethod" value="euclidean">
+                            <span>Euclidean Distance (Straight Line)</span>
+                        </label>
+                    </div>
+                    <div class="settings-panel">
+                        <div class="setting-item">
+                            <label>Number of Clusters (K):</label>
+                            <input type="number" id="kValue" min="2" max="6" value="3" class="number-input">
+                        </div>
+                    </div>
+                    <div class="centroids-box-title">
+                        <h3>Initial Centroids (First K Points)</h3>
+                        <div id="centroidsBox" class="centroids-box"></div>
+                    </div>
+                    <div class="button-group">
+                        <button id="backToStep1" class="btn-dark">← Back</button>
+                        <button id="solveBtn" class="btn-purple-large">Solve →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step3" class="step">
+                <div class="section">
+                    <h2>3. Results</h2>
+                    <div id="distanceEquationsTitle" class="subtitle">Distance Equations</div>
+                    <div id="equations" class="equations-box"></div>
+                    
+                    <div id="distancesTitle" class="subtitle">Distances Table</div>
+                    <div id="distancesTable"></div>
+                    
+                    <div id="clustersTitle" class="subtitle">Clusters</div>
+                    <div id="clustersDisplay"></div>
+                    
+                    <div id="newCentroidsTitle" class="subtitle">New Centroids Calculation</div>
+                    <div id="newCentroidsDisplay"></div>
+                    
+                    <div class="button-group">
+                        <button id="backToStep2" class="btn-dark">← Back</button>
+                        <button id="nextToStep4" class="btn-purple-large">Next →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step4" class="step">
+                <div class="section">
+                    <h2>4. Full Details & Visualization</h2>
+                    <div id="iterationSteps"></div>
+                    <div class="chart-container">
+                        <canvas id="clustersChart" width="600" height="400"></canvas>
+                    </div>
+                    <div class="button-group">
+                        <button id="backToStep3" class="btn-dark">← Back</button>
+                        <button id="resetAllBtn" class="btn-purple-large">Start Over</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
